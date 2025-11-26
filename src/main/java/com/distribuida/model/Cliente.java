@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 
 public class Cliente {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // atributos
