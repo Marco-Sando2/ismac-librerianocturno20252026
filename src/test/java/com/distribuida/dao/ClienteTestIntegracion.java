@@ -39,13 +39,13 @@ public class ClienteTestIntegracion {
 
     @Test
     public void testClienteSave(){
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(1,"172839456","Juan007","Perez007","Av.New","0987456321","Juan007@correo.com");
         clienteRepository.save(cliente);
     }
 
-    @Test
+   @Test
     public void testClienteActualizar(){
-        Optional<Cliente> cliente = clienteRepository.findById(39);
+        Optional <Cliente> cliente = clienteRepository.findById(35);
 
         cliente.orElse(null).setCedula("172839456");
         cliente.orElse(null).setNombre("Juan88");
@@ -53,14 +53,13 @@ public class ClienteTestIntegracion {
         cliente.orElse(null).setDireccion("Taipe88");
         cliente.orElse(null).setTelefono("0936251488");
         cliente.orElse(null).setCorreo("coreoo888@correeo.com");
-
         clienteRepository.save(cliente.orElse(null));
 
     }
 
     @Test
     public void testClienteBorrar(){
-        clienteRepository.deleteById(39);
+        clienteRepository.deleteById(35);
     }
 
 }

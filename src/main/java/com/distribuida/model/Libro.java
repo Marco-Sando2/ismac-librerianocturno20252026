@@ -40,11 +40,11 @@ public class Libro {
     @Column(name = "precio")
     private Double precio;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_autor")
     private Autor autor;
 
