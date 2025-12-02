@@ -13,6 +13,8 @@ import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Transactional
@@ -25,6 +27,8 @@ public class ClienteTestIntegracion {
     @Test
     public void testClienteFindAll(){
         List<Cliente> clientes = clienteRepository.findAll();
+        assertNotNull(clientes);
+        assertTrue(clientes.size() > 0);
         for (Cliente item: clientes){
             System.out.println(item.toString());
         }
@@ -33,6 +37,9 @@ public class ClienteTestIntegracion {
     @Test
     public void testClienteFindOne(){
         Optional<Cliente> cliente = clienteRepository.findById(1);
+        assertNotNull(cliente.isPresent());
+        assertEquals("Puro",cliente.orElse(null).getNombre());
+        assertEquals("Hueso",cliente.orElse(null).getApellido());
         System.out.println(cliente);
 
     }
@@ -40,7 +47,10 @@ public class ClienteTestIntegracion {
     @Test
     public void testClienteSave(){
         Cliente cliente = new Cliente(1,"172839456","Juan007","Perez007","Av.New","0987456321","Juan007@correo.com");
-        clienteRepository.save(cliente);
+        Cliente clienteGuardado = clienteRepository.save(cliente);
+        assertNotNull(clienteGuardado);
+        assertEquals("172839456", clienteGuardado.getCedula());
+        assertEquals("Juann0777", clienteGuardado.getCedula());
     }
 
    @Test
