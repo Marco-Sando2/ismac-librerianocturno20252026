@@ -17,6 +17,7 @@ public class FacturaDetalle {
     @ManyToOne
     @JoinColumn(name = "id_factura")
     private Factura factura;
+
     @ManyToOne
     @JoinColumn(name = "id_libro")
     private Libro libro;
