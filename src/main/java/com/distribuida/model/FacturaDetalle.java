@@ -9,7 +9,7 @@ public class FacturaDetalle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_factura_detalle")
     private int idFacturaDetalle;
-    @Column(name = "camtidad")
+    @Column(name = "cantidad")
     private int cantidad;
     @Column(name = "subtotal")
     private Double subtotal;
