@@ -3,6 +3,7 @@ package com.distribuida.dao;
 
 import com.distribuida.model.Factura;
 import com.distribuida.model.FacturaDetalle;
+import com.distribuida.model.Libro;
 import com.sun.source.util.SourcePositions;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -39,19 +40,35 @@ public class FacturaDetalleTestIntegracion {
         facturaRepository.deleteById(206);
     }
 
-    /*@Test
+    @Test
     public void testFacturaDetalleFindAll(){
         List<FacturaDetalle> detalles =facturaDetalleRepository.findAll();
         detalles.forEach(System.out::println);
-    }*/
+    }
 
-    /*@Test
-    public void TestFacturaSave(){
-        Factura factura = facturaRepository.findById(2);
+    @Test
+    public void testFacturaDetalleFindOne() {
+        FacturaDetalle detalle = facturaDetalleRepository.findById(1).orElse(null);
+        System.out.println(detalle);
+    }
+
+    @Test
+    public void TestFacturaDetalleSave(){
+        Optional<Factura> factura = facturaRepository.findById(2);
+        Optional<Libro> libro = libroRepository.findById(2);
 
         FacturaDetalle facturaDetalle = new FacturaDetalle();
+        facturaDetalle.setIdFacturaDetalle(0);
+        facturaDetalle.setCantidad(2);
+        facturaDetalle.setSubtotal(51.00);
+        facturaDetalle.setFactura(factura.orElse(null));
+        facturaDetalle.setLibro(libro.orElse(null));
+
+        facturaDetalleRepository.save(facturaDetalle);
+    }
 
 
-    }*/
+
+
 
 }

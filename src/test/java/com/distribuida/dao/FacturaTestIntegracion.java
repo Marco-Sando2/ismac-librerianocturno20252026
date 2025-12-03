@@ -61,7 +61,7 @@ public class FacturaTestIntegracion {
 
     @Test
     public void testFacturaUpdate(){
-        Optional<Cliente> cleinte = clienteRepository.findById(2);
+        Optional<Cliente> cliente = clienteRepository.findById(2);
         Optional<Factura> factura = facturaRepository.findById(82);
 
             factura.orElse(null).setNumFactura("FAC-007");
@@ -69,7 +69,7 @@ public class FacturaTestIntegracion {
             factura.orElse(null).setTotalNeto(200.00);
             factura.orElse(null).setIva(20.00);
             factura.orElse(null).setTotal(2020.00);
-            factura.orElse(null).setCliente(cleinte.orElse(null));
+            factura.orElse(null).setCliente(cliente.orElse(null));
             facturaRepository.save((factura.orElse(null))
             );
     }
