@@ -50,7 +50,7 @@ public class ClienteTestIntegracion {
         Cliente clienteGuardado = clienteRepository.save(cliente);
         assertNotNull(clienteGuardado);
         assertEquals("172839456", clienteGuardado.getCedula());
-        assertEquals("Juann0777", clienteGuardado.getCedula());
+        assertEquals("Juan007", clienteGuardado.getNombre());
     }
 
    @Test
