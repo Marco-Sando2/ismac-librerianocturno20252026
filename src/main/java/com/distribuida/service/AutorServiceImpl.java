@@ -21,7 +21,7 @@ public class AutorServiceImpl implements AutorService{
     }
 
     @Override
-    public Autor update(Autor autor) {
+    public Autor update(int id, Autor autor) {
         return null;
     }
 

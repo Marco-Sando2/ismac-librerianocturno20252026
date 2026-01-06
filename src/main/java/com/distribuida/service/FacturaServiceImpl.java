@@ -9,6 +9,8 @@ import java.util.Optional;
 
 public class FacturaServiceImpl implements FacturaService {
 
+    @Autowired
+    private FacturaRepository facturaRepository;
 
     @Override
     public List<Factura> findALL() {
@@ -27,16 +29,25 @@ public class FacturaServiceImpl implements FacturaService {
 
     @Override
     public Factura update(int id, Factura factura) {
+        Optional<Factura> facturaExistente = facturaRepository.findById(id);
+
+        if (facturaExistente == null){
+
         return null;
+        }
+
+        facturaExistente.orElse(null).setNumFactura(factura.getNumFactura());
+        facturaExistente.orElse(null).setFecha(factura.getFecha());
+        facturaExistente.orElse(null).setTotal(factura.getTotal());
+        facturaExistente.orElse(null).setIva(factura.getIva());
+        facturaExistente.orElse(null).setTotalNeto(factura.getTotalNeto());
+        facturaExistente.orElse(null).setCliente(factura.getCliente());
+
+        return facturaRepository.save(facturaExistente.orElse(null));
     }
 
     @Override
-    public Factura update(Factura factura) {
-        return null;
-    }
-
-    @Override
-    public void delet(int id) {
+    public void delete(int id) {
 
     }
 }

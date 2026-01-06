@@ -10,11 +10,9 @@ public interface FacturaDetalleSerivce {
 
     Optional<FacturaDetalle> findOne(int id);
 
-    FacturaDetalle save(FacturaDetalle detalle);
+    FacturaDetalle save(FacturaDetalle facturaDetalle);
 
-    FacturaDetalle update(int id, FacturaDetalle detalle);
-
-    FacturaDetalle update(FacturaDetalle detalle);
+    FacturaDetalle update(int id, FacturaDetalle facturaDetalle);
 
     void delete(int id);
 }

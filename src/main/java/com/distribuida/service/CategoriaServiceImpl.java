@@ -21,7 +21,7 @@ public class CategoriaServiceImpl implements CategoriaService{
     }
 
     @Override
-    public Categoria update(Categoria categoria) {
+    public Categoria update(int id, Categoria categoria) {
         return null;
     }
 
