@@ -1,10 +1,17 @@
 package com.distribuida.service;
 
+import com.distribuida.dao.CategoriaRepository;
 import com.distribuida.model.Categoria;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CategoriaServiceImpl implements CategoriaService{
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     @Override
     public List<Categoria> findAll() {
         return List.of();
@@ -22,7 +29,18 @@ public class CategoriaServiceImpl implements CategoriaService{
 
     @Override
     public Categoria update(int id, Categoria categoria) {
-        return null;
+
+        Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
+
+        if (categoriaExistente == null){
+            return null;
+        }
+
+        categoriaExistente.orElse(null).setCategoria(categoria.getCategoria());
+        categoriaExistente.orElse(null).setDescripcion(categoria.getDescripcion());
+
+        return categoriaRepository.save(categoriaExistente.orElse(null));
+
     }
 
     @Override
