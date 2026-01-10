@@ -17,9 +17,9 @@ public class Cliente {
     private String cedula;
     @Column(name ="nombre")
     private String nombre;
-    @Column(name ="apelldio")
+    @Column(name ="apellido")
     private String apellido;
-    @Column(name = "direcciom")
+    @Column(name = "direccion")
     private String direccion;
     @Column(name = "telefono")
     private String telefono;

@@ -21,12 +21,12 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente findOne(int id) {
-        return null;
+        return clienteRepository.findById(id).orElse(null);
     }
 
     @Override
     public Cliente save(Cliente cliente) {
-        return null;
+        return clienteRepository.save(cliente);
     }
 
     @Override
@@ -50,6 +50,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void delete(int id) {
+        if ( clienteRepository.existsById(id)){
+            clienteRepository.deleteById(id);
+        }
 
     }
 }

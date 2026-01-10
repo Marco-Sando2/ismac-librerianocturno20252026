@@ -1,20 +1,12 @@
 package com.distribuida.controler;
 
-
-import ch.qos.logback.core.joran.conditional.IfAction;
-import com.distribuida.dao.FacturaRepository;
-import com.distribuida.model.Cliente;
 import com.distribuida.model.Factura;
 import com.distribuida.service.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/facturas")
@@ -24,11 +16,38 @@ public class FacturaController {
     private FacturaService facturaService;
 
     @GetMapping
-    public ResponseEntity<List<Factura>> findAll(){
-        List<Factura> facturas = facturaService.findALL();
+    public ResponseEntity<List<Factura>> findAll() {
+        List<Factura> facturas = facturaService.findAll();
         return ResponseEntity.ok(facturas);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Factura> findOne(@PathVariable int id){
+        Factura Factura = facturaService.findOne(id);
+        if (Factura == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(Factura);
+    }
 
+    @PostMapping
+    public ResponseEntity<Factura> save(@RequestBody Factura Factura){
+        Factura FacturaNuevo=facturaService.save(Factura);
+        return ResponseEntity.ok(FacturaNuevo);
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity <Factura> update(@PathVariable int id, @RequestBody Factura factura){
+        Factura  facturaActulizado = facturaService.update(id, factura);
+        if (facturaActulizado == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(facturaActulizado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable int id){
+        facturaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

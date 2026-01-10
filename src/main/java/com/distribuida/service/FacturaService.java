@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface FacturaService {
 
-    public List<Factura> findALL();
+    public List<Factura> findAll();
 
-    public Optional<Factura> findOne(int id);
+    public Factura findOne(int id);
 
     public Factura save(Factura factura);
 

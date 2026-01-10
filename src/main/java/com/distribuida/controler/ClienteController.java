@@ -33,13 +33,13 @@ public class ClienteController {
         }
 
         @PostMapping
-    public ResponseEntity<Cliente> save(@RequestBody Cliente cleinte){
-            Cliente cLieNteNuevo=clienteService.save(cleinte);
-            return ResponseEntity.ok(cLieNteNuevo);
+    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
+            Cliente cLienteNuevo=clienteService.save(cliente);
+            return ResponseEntity.ok(cLienteNuevo);
         }
 
-        @PostMapping("/{id}")
-    public ResponseEntity <Cliente> uptade(@PathVariable int id, @RequestBody Cliente cliente){
+        @PutMapping("/{id}")
+    public ResponseEntity <Cliente> update(@PathVariable int id, @RequestBody Cliente cliente){
             Cliente  clienteActulizado = clienteService.update(id, cliente);
             if (clienteActulizado == null){
                 return ResponseEntity.notFound().build();
@@ -48,7 +48,7 @@ public class ClienteController {
         }
 
         @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delet(@PathVariable int id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
             clienteService.delete(id);
             return ResponseEntity.noContent().build();
         }

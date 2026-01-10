@@ -13,18 +13,18 @@ public class FacturaServiceImpl implements FacturaService {
     private FacturaRepository facturaRepository;
 
     @Override
-    public List<Factura> findALL() {
-        return List.of();
+    public List<Factura> findAll() {
+        return facturaRepository.findAll();
     }
 
     @Override
-    public Optional<Factura> findOne(int id) {
-        return Optional.empty();
+    public Factura findOne(int id) {
+        return facturaRepository.findById(id).orElse(null);
     }
 
     @Override
     public Factura save(Factura factura) {
-        return null;
+        return facturaRepository.save(factura);
     }
 
     @Override
@@ -48,6 +48,8 @@ public class FacturaServiceImpl implements FacturaService {
 
     @Override
     public void delete(int id) {
-
+        if ( facturaRepository.existsById(id)){
+            facturaRepository.deleteById(id);
+        }
     }
 }
