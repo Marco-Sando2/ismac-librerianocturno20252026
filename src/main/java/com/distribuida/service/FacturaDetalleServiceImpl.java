@@ -1,14 +1,13 @@
 package com.distribuida.service;
 
 import com.distribuida.dao.FacturaDetalleRepository;
-import com.distribuida.model.Cliente;
-import com.distribuida.model.Factura;
 import com.distribuida.model.FacturaDetalle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class FacturaDetalleServiceImpl implements FacturaDetalleSerivce {
 
     @Autowired
@@ -21,7 +20,7 @@ public class FacturaDetalleServiceImpl implements FacturaDetalleSerivce {
 
     @Override
     public Optional<FacturaDetalle> findOne(int id) {
-        return Optional.empty();
+        return Optional.ofNullable(facturaDetalleRepository.findById(id).orElse(null));
     }
 
     @Override
