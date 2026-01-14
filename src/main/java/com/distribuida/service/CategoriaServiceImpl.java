@@ -15,17 +15,17 @@ public class CategoriaServiceImpl implements CategoriaService{
 
     @Override
     public List<Categoria> findAll() {
-        return List.of();
+        return categoriaRepository.findAll();
     }
 
     @Override
     public Categoria findOne(int id) {
-        return null;
+        return categoriaRepository.findById(id).orElse(null);
     }
 
     @Override
     public Categoria save(Categoria categoria) {
-        return null;
+        return categoriaRepository.save(categoria);
     }
 
     @Override
@@ -46,6 +46,8 @@ public class CategoriaServiceImpl implements CategoriaService{
 
     @Override
     public void delete(int id) {
-
+        if (categoriaRepository.existsById(id)){
+            categoriaRepository.deleteById(id);
+    }
     }
 }

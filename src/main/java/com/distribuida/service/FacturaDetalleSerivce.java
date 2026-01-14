@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface FacturaDetalleSerivce {
     List<FacturaDetalle> findAll();
 
-    Optional<FacturaDetalle> findOne(int id);
+    FacturaDetalle findOne(int id);
 
     FacturaDetalle save(FacturaDetalle facturaDetalle);
 

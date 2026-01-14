@@ -3,6 +3,7 @@ package com.distribuida.service;
 import com.distribuida.dao.FacturaDetalleRepository;
 import com.distribuida.model.FacturaDetalle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,17 +16,17 @@ public class FacturaDetalleServiceImpl implements FacturaDetalleSerivce {
 
     @Override
     public List<FacturaDetalle> findAll() {
-        return List.of();
+        return facturaDetalleRepository.findAll();
     }
 
     @Override
-    public Optional<FacturaDetalle> findOne(int id) {
-        return Optional.ofNullable(facturaDetalleRepository.findById(id).orElse(null));
+    public FacturaDetalle findOne(int id) {
+        return facturaDetalleRepository.findById(id).orElse(null);
     }
 
     @Override
     public FacturaDetalle save(FacturaDetalle facturaDetalle) {
-        return null;
+        return facturaDetalleRepository.save(facturaDetalle);
     }
 
     @Override

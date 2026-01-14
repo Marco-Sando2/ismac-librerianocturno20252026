@@ -15,17 +15,17 @@ public class AutorServiceImpl implements AutorService{
 
     @Override
     public List<Autor> findAll() {
-        return List.of();
+        return autorRepository.findAll();
     }
 
     @Override
     public Autor findOne(int id) {
-        return null;
+        return autorRepository.findById(id).orElse(null);
     }
 
     @Override
     public Autor save(Autor autor) {
-        return null;
+        return autorRepository.save(autor);
     }
 
     @Override
@@ -50,6 +50,9 @@ public class AutorServiceImpl implements AutorService{
 
     @Override
     public void delete(int id) {
+        if(autorRepository.existsById(id)){
+            autorRepository.deleteById(id);
+        }
 
     }
 }

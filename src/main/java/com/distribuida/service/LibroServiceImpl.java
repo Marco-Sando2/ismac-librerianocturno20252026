@@ -15,17 +15,17 @@ public class LibroServiceImpl implements LibroService{
 
     @Override
     public List<Libro> findAll() {
-        return List.of();
+        return libroRepository.findAll();
     }
 
     @Override
     public Libro findOne(int id) {
-        return null;
+        return libroRepository.findById(id).orElse(null);
     }
 
     @Override
     public Libro save(Libro libro) {
-        return null;
+        return libroRepository.save(libro);
     }
 
     @Override
@@ -59,6 +59,8 @@ public class LibroServiceImpl implements LibroService{
 
     @Override
     public void delete(int id) {
-
+        if ( libroRepository.existsById(id)){
+            libroRepository.deleteById(id);
+        }
     }
 }

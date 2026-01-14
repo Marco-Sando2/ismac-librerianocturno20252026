@@ -38,14 +38,14 @@ public class ClienteController {
             return ResponseEntity.ok(cLienteNuevo);
         }
 
-        @PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity <Cliente> update(@PathVariable int id, @RequestBody Cliente cliente){
-            Cliente  clienteActulizado = clienteService.update(id, cliente);
-            if (clienteActulizado == null){
-                return ResponseEntity.notFound().build();
-            }
-            return ResponseEntity.ok(clienteActulizado);
+        Cliente  clienteActulizado = clienteService.update(id, cliente);
+        if (clienteActulizado == null){
+            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.ok(clienteActulizado);
+    }
 
         @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
