@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { ClienteComponent } from './component/cliente/cliente';
+import { ClienteComponent } from './components/cliente/cliente';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -15,13 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Autor } from './components/autor/autor';
+import { LibroComponent } from './components/libro/libro';
 
 
 @NgModule({
   declarations: [
     App,
     ClienteComponent,
-    Autor
+    Autor,
+    LibroComponent
   ],
   imports: [
     BrowserModule,

@@ -94,7 +94,7 @@ export class ClienteComponent implements OnInit {
     this.editar = true;
 
     setTimeout(() => {
-      this.formularioCliente.nativeElement.scrollIntoView8({ behavior: 'smooh', block: 'start' });
+      this.formularioCliente.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   }
 
