@@ -1,4 +1,4 @@
-    export interface Categoria{
+    export interface Autor{
     idAutor: number
     nombre: string
     apellido: string

@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Autor } from './components/autor/autor';
 import { LibroComponent } from './components/libro/libro';
+import { CategoriaComponent } from './components/categoria/categoria';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LibroComponent } from './components/libro/libro';
     App,
     ClienteComponent,
     Autor,
-    LibroComponent
+    LibroComponent,
+    CategoriaComponent
   ],
   imports: [
     BrowserModule,

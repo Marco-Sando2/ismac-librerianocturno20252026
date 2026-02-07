@@ -1,8 +1,10 @@
-import { Autor } from "../services/autor"
-import { Categoria } from "./autor.model"
+
+import { Autor } from "./autor.model"
+import { Categoria } from "./categoria.model"
+
 
 export interface Libro{
-    idLibro: Number
+    idLibro: number
     titulo: string
     editorial: string
     numPaginas: number
