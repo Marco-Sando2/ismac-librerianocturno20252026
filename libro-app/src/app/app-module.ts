@@ -14,16 +14,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Autor } from './components/autor/autor';
+import { AutorComponent } from './components/autor/autor';
 import { LibroComponent } from './components/libro/libro';
 import { CategoriaComponent } from './components/categoria/categoria';
-
+import { MatDialogModule} from '@angular/material/dialog'
+import { MatOption, MatSelectModule } from '@angular/material/select';
+import {MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker'
 
 @NgModule({
   declarations: [
     App,
     ClienteComponent,
-    Autor,
+    AutorComponent,
     LibroComponent,
     CategoriaComponent
   ],
@@ -39,10 +42,16 @@ import { CategoriaComponent } from './components/categoria/categoria';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    MatDatepickerModule
   ],
   bootstrap: [App]
 })

@@ -23,8 +23,8 @@ export class LibroService {
   return this.http.post<Libro>(this.baseUrl, Libro);
   }
 
-  update(id: number, cliente: Libro): Observable<Libro>{
-  return this.http.put<Libro>(`${this.baseUrl}/${id}`, cliente);
+  update(id: number, libro: Libro): Observable<Libro>{
+  return this.http.put<Libro>(`${this.baseUrl}/${id}`, libro);
   }
 
   delete(id: number): Observable<void>{

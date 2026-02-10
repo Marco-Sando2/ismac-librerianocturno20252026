@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/
 import { Libro } from '../../model/libro.model';
 import { Categoria } from '../../model/categoria.model';
 import { MatTableDataSource } from '@angular/material/table';
-import { Autor } from '../autor/autor';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { LibroService } from '../../services/libro';
@@ -11,6 +10,9 @@ import { HttpClient } from '@angular/common/http';
 import { AutorService } from '../../services/autor';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
+import { Autor } from '../../model/autor.model';
+
 
 @Component({
   selector: 'app-libro',
@@ -18,6 +20,7 @@ import Swal from 'sweetalert2';
   templateUrl: './libro.html',
   styleUrl: './libro.css',
 })
+
 export class LibroComponent implements OnInit {
   
   libros: Libro[] = [];
@@ -115,4 +118,99 @@ export class LibroComponent implements OnInit {
       }
     });
   }
+
+//intereacion en la pagina
+ 
+editarLibro(libro: Libro): void{
+  this.libro = {...libro};
+  this.idEditar = libro.idLibro;
+  this.editar = true;
+  setTimeout(() =>{
+    this.formularioLibro.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  },100);
+}
+
+editarLibroCancelar(form: NgForm): void{
+  this.libro = {} as Libro;
+  this.idEditar = null;
+  this.editar = false;
+  form.resetForm();
+}
+
+guardarLibro(): void{
+  if(this.editar && this.idEditar !==  null){
+    this.update();
+  }else{
+    this.save();
+  }
+  this.dialog.closeAll();
+}
+
+friltroLibro(event: Event): void{
+  const filtro = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filtro.trim().toLocaleLowerCase();
+}
+
+nombreCompletoAutor(autor: Autor): string{
+   return `${autor.nombre} ${autor.apellido}`;
+}
+
+abrirModel(libro?: Libro): void{
+  if(libro){
+    this.libro = {...libro};
+    this.editar = true;
+    this.idEditar = libro.idLibro;
+}else{
+    this.libro = { } as Libro;
+    this.editar = false;
+    this.idEditar = null;
+  }
+  this.dialog.open(this.modalLibro,{
+    width: '800px',
+    disableClose: true
+  })
+}
+
+comparAutores(a1: Autor, a2: Autor): boolean{
+  return a1 && a2 ? a1.idAutor === a2.idAutor : a1 === a2;
+}
+ 
+campareCategorias(c1: Categoria, c2: Categoria): boolean{
+  return c1 && c2 ? c1.idCategoria === c2.idCategoria : c1 ===c2;
+}
+
+onFileSelected(event: any){
+  this.seleccionarArchivo= event.target.files[0];
+}
+
+subirImagen(): void{
+  const formData = new FormData();
+  formData.append("file", this.seleccionarArchivo);
+
+  if(this.libro.portada){
+    formData.append("oldImage", this.libro.portada)
+  }
+
+  this.http.post<{ruta: string}>('http://localhost:8080/api/upload-portada', formData).subscribe(res =>{  
+    this.libro.portada = res.ruta;
+    this.imagenPrevia = res.ruta;
+  });
+
+}
+
+abrirModalDetalles(libro: Libro): void{
+  this.libroSeleccionado = libro;
+  this.dialog.open(this.modalDetalles, {
+    width: '500px'
+  });
+}
+
+
+cerrarModal(): void{
+  this.dialog.closeAll();
+  this.libroSeleccionado = null;
+}
+
+
+
 }
