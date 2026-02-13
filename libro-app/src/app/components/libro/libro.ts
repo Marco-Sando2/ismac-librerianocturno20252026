@@ -155,7 +155,7 @@ nombreCompletoAutor(autor: Autor): string{
    return `${autor.nombre} ${autor.apellido}`;
 }
 
-abrirModel(libro?: Libro): void{
+abrirModal(libro?: Libro): void{
   if(libro){
     this.libro = {...libro};
     this.editar = true;
@@ -210,7 +210,6 @@ cerrarModal(): void{
   this.dialog.closeAll();
   this.libroSeleccionado = null;
 }
-
 
 
 }
