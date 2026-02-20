@@ -15,7 +15,7 @@ import { NgForm } from '@angular/forms';
 })
 export class CategoriaComponent implements OnInit {
 
-
+  
   @ViewChild('formularioCategoria') formularioCategoria!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

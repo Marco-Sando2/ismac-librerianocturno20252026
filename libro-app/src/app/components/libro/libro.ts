@@ -146,7 +146,7 @@ guardarLibro(): void{
   this.dialog.closeAll();
 }
 
-friltroLibro(event: Event): void{
+filtroLibro(event: Event): void{
   const filtro = (event.target as HTMLInputElement).value;
   this.dataSource.filter = filtro.trim().toLocaleLowerCase();
 }
@@ -171,11 +171,11 @@ abrirModal(libro?: Libro): void{
   })
 }
 
-comparAutores(a1: Autor, a2: Autor): boolean{
+compararAutores(a1: Autor, a2: Autor): boolean{
   return a1 && a2 ? a1.idAutor === a2.idAutor : a1 === a2;
 }
  
-campareCategorias(c1: Categoria, c2: Categoria): boolean{
+compareCategorias(c1: Categoria, c2: Categoria): boolean{
   return c1 && c2 ? c1.idCategoria === c2.idCategoria : c1 ===c2;
 }
 

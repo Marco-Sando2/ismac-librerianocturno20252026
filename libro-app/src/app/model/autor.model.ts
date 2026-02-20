@@ -5,4 +5,5 @@
     pais: string
     direccion: string
     telefono: string
+    correo: string
 }
